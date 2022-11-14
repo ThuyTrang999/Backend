@@ -40,8 +40,8 @@ module.exports = class User {
     }
 
     static async insertNewUser(email, username, password, fullname, phone, role, gender, address) {
-        const sql = "INSERT INTO `User` (`email`, `username`, `password`, `fullname`,`phone`, `role`, `gender`, `address`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        const params = [email, username, password, fullname, phone, gender, address, role];
+        const sql = "INSERT INTO `User` (`email`, `username`, `password`, `fullname`, `phone`, `role`, `gender`, `address`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        const params = [email, username, password, fullname, phone, role, gender, address];
 
         return await new Promise((resolve, reject) => {
             db.query(sql, params, function (err, result, fields) {
@@ -60,7 +60,26 @@ module.exports = class User {
 
     static async updateUser(user_id, email, username, password, fullname, phone, role, gender, address) {
         const sql = "UPDATE `User` SET email = ?, username = ?, password = ?, fullname = ?, phone = ?, role = ?, gender = ?, address = ? WHERE user_id = ?";
-        const params = [email, username, password, fullname, phone, gender, address, role, user_id];
+        const params = [email, username, password, fullname, phone, role, gender, address, user_id];
+
+        return await new Promise((resolve, reject) => {
+            db.query(sql, params, function (err, result, fields) {
+                if (err) {
+                    reject(err);
+                }
+                else if(result.affectedRows > 0){
+                    resolve(true);
+                }
+                else{
+                    resolve(false);
+                }
+            })
+        });
+    }
+
+    static async deleteUser(user_id) {
+        const sql = "DELETE FROM `User` WHERE `User`.user_id = ?";
+        const params = [user_id];
 
         return await new Promise((resolve, reject) => {
             db.query(sql, params, function (err, result, fields) {
