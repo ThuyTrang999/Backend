@@ -6,9 +6,6 @@ const upload = require('../middlewares/UploadImage');
 const Router = express.Router();
 
 
-//const db = require('../db');
-
-
 // GET products/
 Router.get('/', async (req, res) => {
      var productList = await Product.getAllProduct();

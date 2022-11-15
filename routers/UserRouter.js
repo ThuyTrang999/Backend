@@ -5,7 +5,6 @@ const Router = express.Router();
 
 /*
 Bổ sung paging cho get users
-Bổ sung update file hình ảnh
 */
 
 /*

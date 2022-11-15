@@ -64,9 +64,9 @@ CREATE TABLE `Cart`(
      FOREIGN KEY (`user_id`) REFERENCES `User`(`user_id`) ON DELETE CASCADE,
      FOREIGN KEY (`product_id`) REFERENCES `Product`(`product_id`) ON DELETE CASCADE
 );
-
 INSERT INTO `Cart`(`user_id`, `product_id`) VALUES
-('1', '1');
+(1, 1),
+(1, 2);
 
 
 CREATE TABLE `CommentRating`(
@@ -79,7 +79,7 @@ CREATE TABLE `CommentRating`(
      FOREIGN KEY (`product_id`) REFERENCES `Product`(`product_id`) ON DELETE CASCADE
 );
 INSERT INTO `CommentRating`(`user_id` , `product_id`, `comment_content`, `rating_point`) VALUES
-('1', '1', "So deep", 5);
+(1, 1, "So deep", 5);
 
 
 CREATE TABLE `Order`(
@@ -91,7 +91,7 @@ CREATE TABLE `Order`(
      FOREIGN KEY (`product_id`) REFERENCES `Product`(`product_id`) ON DELETE CASCADE
 );
 
-
+--Check again--
 CREATE TABLE `Payment`(
      `payment_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
      `user_id` INT NOT NULL,
@@ -101,11 +101,14 @@ CREATE TABLE `Payment`(
      FOREIGN KEY (`user_id`) REFERENCES `User`(`user_id`) ON DELETE CASCADE
 );
 
+
+
 CREATE TABLE `Report`(
      `report_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
      `order_id` INT NOT NULL,
      `payment_method` VARCHAR(10) NOT NULL,
      FOREIGN KEY (`order_id`) REFERENCES `Order`(`order_id`) ON DELETE CASCADE
 );
+
 
 
