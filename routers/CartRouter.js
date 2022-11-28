@@ -90,7 +90,7 @@ Router.put('/:id', async (req, res) => {
      return res.status(200).json({"message": "cập nhật trạng thái sản phẩm thành công"});
 })
 
-
+//DELETE carts/:user_id/:product_id
 // Xóa sản phẩm ra khỏi cart của user
 Router.delete('/:user_id/:product_id', async (req, res) => {
      var user_id = req.params.user_id;

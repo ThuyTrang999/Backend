@@ -44,17 +44,17 @@ app.use('/orders', OrderRouter);
 app.use('/payments', PaymentRouter);
 app.use('/digitalpays', DigitalPayRouter);
 
-
-app.get('/login', (req, res) => {
+// POST /login
+app.post('/login', async (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
 
-    var user = User.getUserByUsername(username);
+    var user = await User.getUserByUsername(username);
     if (!user || user["password"] != password) {
         return res.status(404).json({ "message": "username hoặc password sai" });
     }
 
-    return res.status(200).json({ "message": "đăng nhập thành công" });
+    return res.status(200).json(user);
 })
 
 

@@ -115,4 +115,24 @@ module.exports = class User {
         });
     }
 
+    
+    static async updateUserRole(role, user_id) { 
+        const sql = "UPDATE `User` SET role = ? WHERE user_id = ?";
+        const params = [role, user_id];
+
+        return await new Promise((resolve, reject) => {
+            db.query(sql, params, function (err, result, fields) {
+                if (err) {
+                    reject(err);
+                }
+                else if(result.affectedRows > 0){
+                    resolve(true);
+                }
+                else{
+                    resolve(false);
+                }
+            })
+        });
+    }
+
 };

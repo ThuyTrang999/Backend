@@ -13,7 +13,7 @@ Router.get('/', async (req, res) => {
 
 //GET order/:id 
 Router.get('/:id', async (req, res) => {
-    var order_id = req.params.order_id;
+    var order_id = req.params.id;
     var order = await Order.getOrderById(order_id);
     
      if (!order) {
@@ -24,7 +24,7 @@ Router.get('/:id', async (req, res) => {
 })
 
 
-//GET 
+//GET order/userorder/:id
 Router.get('/userorder/:id', async (req, res) => {
     var user_id = req.params.id;
     var orderList = await Order.getOrderByUserId(user_id);

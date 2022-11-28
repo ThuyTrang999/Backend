@@ -50,7 +50,7 @@ module.exports = class Order {
                         reject(err);
                 }
                 else if (result.length > 0) {
-                        resolve(result);
+                        resolve(result[0]);
                 }
                 else {
                         resolve(null);
