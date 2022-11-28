@@ -21,6 +21,25 @@ module.exports = class Order {
         });
     };
 
+    static async getOrderProductById(order_id) {
+        const sql = "SELECT * FROM `OrderProduct`";
+        const params = order_id;
+
+        return await new Promise((resolve, reject) => {
+            db.query(sql, params, function (err, result, fields) {
+                if (err) {
+                        reject(err);
+                }
+                else if (result.length > 0) {
+                        resolve(result);
+                }
+                else {
+                        resolve(null);
+                }
+            })
+        });
+    };
+
     static async getOrderById(order_id){
         const sql = "SELECT * FROM `Order` WHERE order_id = ?";
         const params = [order_id]

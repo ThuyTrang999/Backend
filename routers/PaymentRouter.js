@@ -75,7 +75,25 @@ Router.post('/', async (req, res) => {
         }
 
     }
-
 })
+
+//Admin trả tiền cho seller
+/*Router.post('/paymentseller', async (req, res) => {
+    var order_id = req.body.order_id;
+
+    var order = Order.getOrderById(order_id);
+    //thêm check đã nhận hàng sau
+
+    var orderProductList = Order.getOrderProductById(order_id);
+
+    var productSellerList = [];
+    orderProductList.forEach(async (orderProduct, index) => {
+        
+        var product = await Product.getProductById(orderProduct["product_id"]);
+        productSellerList.f
+        
+
+    })
+}) */
 
 module.exports = Router;
