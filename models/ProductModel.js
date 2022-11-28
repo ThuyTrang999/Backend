@@ -41,9 +41,9 @@ module.exports = class Product {
      };
 
 
-     static async insertNewProduct(product_image, product_name, description, price) {
-          const sql = "INSERT INTO `Product`(`product_image`, `product_name`, `description`, `price`) VALUES (?, ?, ?, ?)";
-          const params = [product_image, product_name, description, price];
+     static async insertNewProduct(seller_id, product_image, product_name, description, price) {
+          const sql = "INSERT INTO `Product`(`seller_id`, `product_image`, `product_name`, `description`, `price`) VALUES (?, ?, ?, ?)";
+          const params = [seller_id, product_image, product_name, description, price];
 
           return await new Promise((resolve, reject) => {
                db.query(sql, params, function (err, result, fields) {
@@ -60,10 +60,9 @@ module.exports = class Product {
           });
      };
 
-
-     static async updateProduct(product_image, product_name, description, price, product_id) {
-          const sql = "UPDATE Product SET product_image = ?, product_name = ?, description = ?, price = ? WHERE product_id = ?";
-          const params = [product_image, product_name, description, price, product_id];
+     static async updateProductStatus(product_status, product_id){
+          const sql = "UPDATE Product SET status = ? WHERE product_id = ?";
+          const params = [product_status, product_id];
 
           return await new Promise((resolve, reject) => {
                db.query(sql, params, function (err, result, fields) {
@@ -80,7 +79,26 @@ module.exports = class Product {
           });
      };
 
-     static async deleteProdcut(product_id) {
+     static async updateProduct(product_name, description, price, product_id) {
+          const sql = "UPDATE Product SET product_name = ?, description = ?, price = ? WHERE product_id = ?";
+          const params = [product_name, description, price, product_id];
+
+          return await new Promise((resolve, reject) => {
+               db.query(sql, params, function (err, result, fields) {
+                    if (err) {
+                         reject(err);
+                    }
+                    else if(result.affectedRows > 0){
+                         resolve(true);
+                    }
+                    else{
+                         resolve(false);
+                    }
+               })
+          });
+     };
+
+     static async deleteProduct(product_id) {
           const sql = "DELETE FROM `Product` WHERE `Product`.product_id = ?";
           const params = [product_id];
 
