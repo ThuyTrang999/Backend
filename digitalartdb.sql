@@ -16,7 +16,7 @@ CREATE TABLE `User`(
      `user_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
      `email` VARCHAR(64) NOT NULL UNIQUE,
      `username` VARCHAR(64) NOT NULL UNIQUE,
-     `password` VARCHAR(12) NOT NULL,
+     `password` VARCHAR(256) NOT NULL,
      `phone` VARCHAR(10) NOT NULL UNIQUE,
      `fullname` VARCHAR(64) NOT NULL,
      `role` VARCHAR(10) NOT NULL,
@@ -26,10 +26,10 @@ CREATE TABLE `User`(
      `joinDate` DATETIME DEFAULT NOW()
 );
 INSERT INTO `User` (`email`, `username`, `password`, `fullname`,`phone`, `role`, `gender`, `address`) VALUES
-('lehienas2017@gmail.com', 'trang', '123456', 'Hoàng Thị Thùy Trang', '0395616763', 'Admin', 'Female', 'Vương quốc nhà bè'),
-('luuquangthang2k@gmail.com', 'liam', '123456', 'Lưu Quang Thắng', '0379028110', 'Customer', 'Male', 'Quận bẩy TPHCM'),
-('thinh@gmail.com', 'thinh', '123456', 'Trịnh Thịnh', '0395616060', 'Customer', 'Female', 'Quận 7 TPHCM'),
-('hue@gmail.com', 'hue', '123456', 'Huệ', '0395616061', 'Seller', 'Female', 'Quận 7 TPHCM');
+('lehienas2017@gmail.com', 'trang', '$2b$10$9/sWJ5MjPGbhQdbTcWcvh.beQBbs53NIVCcdc.X/y5kzrtbRXJ.5u', 'Hoàng Thị Thùy Trang', '0395616763', 'Admin', 'Female', 'Vương quốc nhà bè'),
+('luuquangthang2k@gmail.com', 'liam', '$2b$10$9/sWJ5MjPGbhQdbTcWcvh.beQBbs53NIVCcdc.X/y5kzrtbRXJ.5u', 'Lưu Quang Thắng', '0379028110', 'Customer', 'Male', 'Quận bẩy TPHCM'),
+('thinh@gmail.com', 'thinh', '$2b$10$9/sWJ5MjPGbhQdbTcWcvh.beQBbs53NIVCcdc.X/y5kzrtbRXJ.5u', 'Trịnh Thịnh', '0395616060', 'Customer', 'Female', 'Quận 7 TPHCM'),
+('hue@gmail.com', 'hue', '$2b$10$9/sWJ5MjPGbhQdbTcWcvh.beQBbs53NIVCcdc.X/y5kzrtbRXJ.5u', 'Huệ', '0395616061', 'Seller', 'Female', 'Quận 7 TPHCM');
 
 
 CREATE TABLE `SellerPending`(

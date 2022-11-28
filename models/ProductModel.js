@@ -42,7 +42,7 @@ module.exports = class Product {
 
 
      static async insertNewProduct(seller_id, product_image, product_name, description, price) {
-          const sql = "INSERT INTO `Product`(`seller_id`, `product_image`, `product_name`, `description`, `price`) VALUES (?, ?, ?, ?)";
+          const sql = "INSERT INTO `Product`(`seller_id`, `product_image`, `product_name`, `description`, `price`) VALUES (?, ?, ?, ?, ?)";
           const params = [seller_id, product_image, product_name, description, price];
 
           return await new Promise((resolve, reject) => {

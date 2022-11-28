@@ -33,7 +33,7 @@ Router.post('/', upload.single('product_image'), async (req, res) => {
      var description = req.body.description;
      var price = req.body.price;
      
-     var insertProductResult = Product.insertNewProduct(seller_id, product_image, product_name, description, price);
+     var insertProductResult = await Product.insertNewProduct(seller_id, product_image, product_name, description, price);
 
      if (insertProductResult) {
          return res.status(200).json({ "message": "Thêm sản phẩm thành công" });

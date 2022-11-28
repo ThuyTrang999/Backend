@@ -9,7 +9,7 @@ const Router = express.Router();
 
 // GET carts/
 Router.get('/', async (req, res) => {
-     var cartList = await Cart.getAllProduct();
+     var cartList = await Cart.getAllCart();
      return res.status(200).json(cartList);
 })
 

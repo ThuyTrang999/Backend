@@ -12,6 +12,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./db');
 const path = require("path");
+const bcrypt = require('bcrypt');
 
 
 const app = express();
@@ -50,11 +51,16 @@ app.post('/login', async (req, res) => {
     var password = req.body.password;
 
     var user = await User.getUserByUsername(username);
-    if (!user || user["password"] != password) {
+    if (!user) {
         return res.status(404).json({ "message": "username hoặc password sai" });
     }
 
-    return res.status(200).json(user);
+    bcrypt.compare(password, user["password"], async function (err, result) {
+        if (result) {
+            return res.status(200).json(user);
+        }
+    });
+    
 })
 
 
